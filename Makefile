@@ -1,29 +1,48 @@
-NAMEC = client
-NAMES = server
+NAME = server
+NAMEB = server_bonus
+
+CNAME = client
+CNAMEB = client_bonus
+
+SSRC = server.c
+
+CSRC = client.c
+
+BSSRC = server_bonus.c
+
+BCSRC = client_bonus.c
+
+SOBJ = $(SSRC:%.c=%.o)
+COBJ = $(CSRC:%.c=%.o)
+
+
+LIBFTBF = ./ft_printf/printf.a
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-RM = rm -rf
-LIBFT = ../Libft-42/libft.a
-SRC_S= server.c
-SRC_C = client.c\
 
-SRCS = ft_itoa.c\
-		ft_atoi.c
+all: $(NAME)$(NAMEC)
 
-OBJ_S= $(SRC_S:%.c=%.o)
-OBJ_C= $(SRC_C:%.c=%.o)
-OBJ= $(SRCS:%.c=%.o)
-all : $(NAMEC) $(NAMES)
-$(NAMEC) $(NAMES) : $(OBJ_S) $(OBJ_C) $(OBJ)
-	@make all -C ./Libft-42
-	$(CC) $(CFLAGS) $(OBJ_S) ../Libft-42/libft.a -o server
-	$(CC) $(CFLAGS) $(OBJ_C) ../Libft-42/libft.a -o client
+$(NAME)$(NAMEC) : $(SOBJ) $(COBJ)
+	$(MAKE)	-C ./ft_printf
+	$(CC) -o $(NAME) $(SSRC) $(LIBFTBF)
+	$(CC) -o $(CNAME) $(CSRC) $(LIBFTBF)
 
-clean : $(RM) 
-	$(OBJ_C) $(OBJ_S)
+bonus: $(NAMEB)$(NAMECB)
 
-fclean : $(RM) 
-	$(OBJ_C) $(OBJ_S) 
-	$(NAMEC) $(NAMES)
+$(NAMEB)$(NAMECB) : $(BCOBJ)
+	$(MAKE)	-C ./ft_printf
+	$(CC) -o $(NAMEB) $(BSSRC) $(LIBFTBF)
+	$(CC) -o $(CNAMEB) $(BCSRC) $(LIBFTBF)
 
-re : fclean all
+clean:
+	$(MAKE) clean -C ./ft_printf
+	/bin/rm -f $(SOBJ) $(COBJ)
+	/bin/rm -f $(BCOBJ)
+
+fclean: clean
+	$(MAKE) fclean -C ./ft_printf
+	/bin/rm -f $(NAME) $(NAMEB)
+	/bin/rm -f $(CNAME) $(CNAMEB)
+
+re: fclean all

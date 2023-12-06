@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putpercent.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suibrahi <suibrahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 21:47:49 by suibrahi          #+#    #+#             */
-/*   Updated: 2023/12/03 04:43:02 by suibrahi         ###   ########.fr       */
+/*   Created: 2023/08/14 19:52:08 by suibrahi          #+#    #+#             */
+/*   Updated: 2023/08/14 21:25:44 by suibrahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "ft_printf.h"
 
-# include <signal.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
-
-
-# include "./ft_printf/ft_printf.h"
-
-#endif
+int	ft_putpercent(void)
+{
+	write(1, "%", 1);
+	return (1);
+}

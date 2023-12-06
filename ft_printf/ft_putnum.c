@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putnum.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suibrahi <suibrahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 21:47:49 by suibrahi          #+#    #+#             */
-/*   Updated: 2023/12/03 04:43:02 by suibrahi         ###   ########.fr       */
+/*   Created: 2023/08/10 05:52:04 by suibrahi          #+#    #+#             */
+/*   Updated: 2023/08/15 03:17:20 by suibrahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "ft_printf.h"
 
-# include <signal.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
+int	ft_putnum(int num)
+{
+	char	*arr;
+	int		len;
+	int		i;
 
-
-# include "./ft_printf/ft_printf.h"
-
-#endif
+	i = 0;
+	arr = ft_itoa(num);
+	len = ft_putstring(arr);
+	free (arr);
+	return (len);
+}

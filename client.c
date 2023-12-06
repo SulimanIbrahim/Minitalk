@@ -17,22 +17,26 @@ int convert_to_bits(char c, int pid)
 	int	bit;
 	int	ascii;
 	int	i;
-	int max;
+	int flag = 0;
 
 	i = 0;
 	ascii = (int) c;
 	while (i < 8)
 	{
-		bit = ascii / (1 << i) % 2;
-		if(bit == 1)
-			kill(pid, SIGUSR1);
-		else
-			kill(pid, SIGUSR2);
+		bit = ascii >> i & 1;
+		if(bit == 0)
+			flag = kill(pid, SID)
+		else if (bit == 1)
+			printf("%d\n", bit);
+		if (flag == -1)
+			{
+				perror("Error sending signal");
+				exit(EXIT_FAILURE);
+			}
+
 		i++;
 		usleep(50);
 	}
-			printf("\n");
-
 	return (bit);
 }
 

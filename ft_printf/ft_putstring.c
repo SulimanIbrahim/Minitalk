@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putstring.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: suibrahi <suibrahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 21:47:49 by suibrahi          #+#    #+#             */
-/*   Updated: 2023/12/03 04:43:02 by suibrahi         ###   ########.fr       */
+/*   Created: 2023/08/12 19:17:56 by suibrahi          #+#    #+#             */
+/*   Updated: 2023/08/14 22:59:17 by suibrahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "ft_printf.h"
 
-# include <signal.h>
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <string.h>
+int	ft_putstring(char *str)
+{
+	int	i;
 
-
-# include "./ft_printf/ft_printf.h"
-
-#endif
+	i = 0;
+	if (!str)
+		i += write(1, "(null)", 6);
+	else
+	{
+		while (str[i] != '\0')
+		{
+			write(1, &str[i], 1);
+			i++;
+		}
+	}
+	return (i);
+}
