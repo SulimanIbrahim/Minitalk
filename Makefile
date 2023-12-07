@@ -30,7 +30,7 @@ $(NAME)$(NAMEC) : $(SOBJ) $(COBJ)
 
 bonus: $(NAMEB)$(NAMECB)
 
-$(NAMEB)$(NAMECB) : $(BCOBJ)
+$(NAMEB)$(NAMECB) : $(BCOBJ) $(BSOBJ)
 	$(MAKE)	-C ./ft_printf
 	$(CC) -o $(NAMEB) $(BSSRC) $(PRINTF)
 	$(CC) -o $(CNAMEB) $(BCSRC) $(PRINTF)
