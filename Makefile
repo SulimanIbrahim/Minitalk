@@ -14,9 +14,9 @@ BCSRC = client_bonus.c
 
 SOBJ = $(SSRC:%.c=%.o)
 COBJ = $(CSRC:%.c=%.o)
-
-
-LIBFTBF = ./ft_printf/printf.a
+BCOBJ = $(BCSRC:%.c=%.o)
+BSOBJ = $(BSSRC:%.c=%.o)
+PRINTF = ./ft_printf/printf.a
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
@@ -25,21 +25,20 @@ all: $(NAME)$(NAMEC)
 
 $(NAME)$(NAMEC) : $(SOBJ) $(COBJ)
 	$(MAKE)	-C ./ft_printf
-	$(CC) -o $(NAME) $(SSRC) $(LIBFTBF)
-	$(CC) -o $(CNAME) $(CSRC) $(LIBFTBF)
+	$(CC) -o $(NAME) $(SSRC) $(PRINTF)
+	$(CC) -o $(CNAME) $(CSRC) $(PRINTF)
 
 bonus: $(NAMEB)$(NAMECB)
 
 $(NAMEB)$(NAMECB) : $(BCOBJ)
 	$(MAKE)	-C ./ft_printf
-	$(CC) -o $(NAMEB) $(BSSRC) $(LIBFTBF)
-	$(CC) -o $(CNAMEB) $(BCSRC) $(LIBFTBF)
+	$(CC) -o $(NAMEB) $(BSSRC) $(PRINTF)
+	$(CC) -o $(CNAMEB) $(BCSRC) $(PRINTF)
 
 clean:
 	$(MAKE) clean -C ./ft_printf
 	/bin/rm -f $(SOBJ) $(COBJ)
-	/bin/rm -f $(BCOBJ)
-
+	/bin/rm -f $(BCOBJ) $(BSOBJ)
 fclean: clean
 	$(MAKE) fclean -C ./ft_printf
 	/bin/rm -f $(NAME) $(NAMEB)

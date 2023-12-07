@@ -13,41 +13,32 @@
 #include "Minitalk.h"
 void handle_signal(int signum)
 {
-	static int max_bits;
-	static int received_bits;
+	static unsigned char received_bits;
 	int bit;
-	int flag;
-	printf("%d\n", signum);
-	flag = 0;
-	received_bits = 0;
-		int check = received_bits;
-		int j = 0;
 
-		if(signum == SIGUSR1)
-				bit = 0;
-		else if(signum == SIGUSR2)
-				bit = 1;
-		else
-			printf("receiving error");
+	bit = (signum == SIGUSR2) ? 1 : 0;
+			if (signum == -1)
+			{
+				ft_printf("receiving error\n");
+				exit(1);
+			}
 		max_bits++;
-		received_bits = received_bits << 1 | bit;
-			// if(flag != -1)
-			// 	printf("%c", (char)received_bits);
+
+		received_bits = (received_bits << 1) | bit;
 		if(max_bits == 8)
-			printf("%d", received_bits);
+		{
+			write(1,&received_bits,1);
+			received_bits = '\0';
+			max_bits = 0;
+		}
 }
 
 int main()
 {
-	char *str = ft_itoa(getpid());
 	signal(SIGUSR1, &handle_signal);
-	signal(SIGUSR1, &handle_signal);
-	int i = 0;
-	while (str[i] != '\0')
-	{
-		write(1, &str[i], 1);
-	i++;
-	}
+	signal(SIGUSR2, &handle_signal);
+	ft_printf("%d\n", getpid());
 	while(1)
 		pause();
+	return (0);
 }

@@ -29,7 +29,7 @@ CFLAGS	= -Wall -Wextra -Werror
 
 OBJS	= $(SRCS:.c=.o)
 
-NAME	= libftprintf.a
+NAME	= printf.a
 
 AR		= ar rc $(NAME) $(OBJS)
 

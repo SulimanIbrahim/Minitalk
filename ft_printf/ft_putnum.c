@@ -16,9 +16,7 @@ int	ft_putnum(int num)
 {
 	char	*arr;
 	int		len;
-	int		i;
 
-	i = 0;
 	arr = ft_itoa(num);
 	len = ft_putstring(arr);
 	free (arr);

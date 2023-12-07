@@ -19,7 +19,7 @@
 # include <stdlib.h>
 # include <string.h>
 
-
+volatile int max_bits = 0;
 # include "./ft_printf/ft_printf.h"
 
 #endif
