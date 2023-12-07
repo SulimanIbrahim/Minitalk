@@ -6,7 +6,7 @@
 /*   By: suibrahi <suibrahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 22:54:04 by suibrahi          #+#    #+#             */
-/*   Updated: 2023/08/15 03:54:52 by suibrahi         ###   ########.fr       */
+/*   Updated: 2023/12/07 19:08:21 by suibrahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ static void	ft_pointer(unsigned long p)
 {
 	if (p >= 16)
 	{
-		ft_pointer(p / 16); 
-		ft_pointer(p % 16); 
+		ft_pointer(p / 16);
+		ft_pointer(p % 16);
 	}
 	else
 	{
-		if (p <= 9) 
+		if (p <= 9)
 			ft_putchar(p + '0');
 		else
 			ft_putchar(p - 10 + 'a');

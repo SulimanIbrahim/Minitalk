@@ -1,8 +1,8 @@
 NAME = server
-NAMEB = server_bonus
+NAMESB = server_bonus
 
-CNAME = client
-CNAMEB = client_bonus
+NAMEC = client
+NAMECB = client_bonus
 
 SSRC = server.c
 
@@ -21,27 +21,28 @@ PRINTF = ./ft_printf/printf.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
+RM = rm -rf
 all: $(NAME)$(NAMEC)
 
 $(NAME)$(NAMEC) : $(SOBJ) $(COBJ)
 	$(MAKE)	-C ./ft_printf
 	$(CC) -o $(NAME) $(SSRC) $(PRINTF)
-	$(CC) -o $(CNAME) $(CSRC) $(PRINTF)
+	$(CC) -o $(NAMEC) $(CSRC) $(PRINTF)
 
-bonus: $(NAMEB)$(NAMECB)
+bonus: $(NAMESB)$(NAMECB)
 
-$(NAMEB)$(NAMECB) : $(BCOBJ) $(BSOBJ)
+$(NAMESB)$(NAMECB) : $(BCOBJ) $(BSOBJ)
 	$(MAKE)	-C ./ft_printf
-	$(CC) -o $(NAMEB) $(BSSRC) $(PRINTF)
-	$(CC) -o $(CNAMEB) $(BCSRC) $(PRINTF)
+	$(CC) -o $(NAMESB) $(BSSRC) $(PRINTF)
+	$(CC) -o $(NAMECB) $(BCSRC) $(PRINTF)
 
 clean:
 	$(MAKE) clean -C ./ft_printf
-	/bin/rm -f $(SOBJ) $(COBJ)
-	/bin/rm -f $(BCOBJ) $(BSOBJ)
+	$(RM) $(SOBJ) $(COBJ)
+	$(RM) $(BCOBJ) $(BSOBJ)
 fclean: clean
 	$(MAKE) fclean -C ./ft_printf
-	/bin/rm -f $(NAME) $(NAMEB)
-	/bin/rm -f $(CNAME) $(CNAMEB)
+	$(RM) $(NAME) $(NAMESB)
+	$(RM) $(NAMEC) $(NAMECB)
 
 re: fclean all

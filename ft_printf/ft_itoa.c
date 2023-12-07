@@ -6,7 +6,7 @@
 /*   By: suibrahi <suibrahi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 19:14:10 by suibrahi          #+#    #+#             */
-/*   Updated: 2023/08/15 03:31:32 by suibrahi         ###   ########.fr       */
+/*   Updated: 2023/12/07 19:01:14 by suibrahi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	*ft_itoa(int n)
 	while (i-- > isnegative)
 	{
 		str[i] = '0' + (n % 10);
-		n /= 10; 
+		n /= 10;
 	}
 	return (str);
 }
